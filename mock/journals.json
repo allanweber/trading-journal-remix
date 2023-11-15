@@ -1,0 +1,35 @@
+[
+  {
+    "id": "ac75d173-49cd-4a18-8c29-dcb2a2e36e88",
+    "name": "SP500",
+    "description": "INDEXSP: .INX",
+    "currency": "USD",
+    "created_at": "2023-01-19T00:00:00.000Z",
+    "initialBalance": 10000,
+    "balance": {
+      "current": 12678.89
+    }
+  },
+  {
+    "id": "3bf37c8a-c438-4d1d-847a-e310ab43ac77",
+    "name": "AMEX",
+    "description": "Amsterdam journal",
+    "currency": "EUR",
+    "created_at": "2023-03-01T00:00:00.000Z",
+    "initialBalance": 9568.23,
+    "balance": {
+      "current": -1234.56
+    }
+  },
+  {
+    "id": "7e165973-79d8-410e-9529-d71bb208cfca",
+    "name": "IBOV",
+    "description": "Bovespa journal",
+    "currency": "BRL",
+    "created_at": "2023-02-28T00:00:00.000Z",
+    "initialBalance": 9568.23,
+    "balance": {
+      "current": 7891.45
+    }
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "build": "remix build",
+    "dev": "remix dev",
+    "start": "remix-serve build",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.16",
+    "@heroicons/react": "^2.0.18",
+    "@remix-run/css-bundle": "2.2.0",
+    "@remix-run/node": "2.2.0",
+    "@remix-run/react": "2.2.0",
+    "@remix-run/serve": "2.2.0",
+    "@tremor/react": "^3.6.1",
+    "clsx": "^2.0.0",
+    "dayjs": "^1.11.9",
+    "isbot": "^3.6.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.10.1"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "2.2.0",
+    "@remix-run/eslint-config": "2.2.0",
+    "@tailwindcss/forms": "^0.5.4",
+    "@types/react": "^18.0.35",
+    "@types/react-dom": "^18.0.11",
+    "eslint": "^8.38.0",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.0.4"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
