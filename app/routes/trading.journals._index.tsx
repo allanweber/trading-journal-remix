@@ -1,12 +1,11 @@
 import type { LoaderFunctionArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
-import { useLoaderData } from '@remix-run/react';
+import { Link, useLoaderData } from '@remix-run/react';
 import React from 'react';
 import DateTimeDisplay from '~/components/DateTimeDisplay';
 import JournalBalanceStatus from '~/components/JournalBalanceStatus';
 import PageHeader from '~/components/PageHeader';
-import PrimaryLink from '~/components/PrimaryLink';
-import RoundLink from '~/components/RoundLink';
+import { Button } from '~/components/ui/button';
 import { getIcon } from '~/model/currency/currencies';
 import { getJournals } from '~/model/journal/journal.server';
 
@@ -26,7 +25,9 @@ export default function JournalsIndex() {
           These are your current journals
         </PageHeader.Subtitle>
         <PageHeader.Action>
-          <PrimaryLink to="./new">Add a new Journal</PrimaryLink>
+          <Button asChild>
+            <Link to="./new">Add a new Journal</Link>
+          </Button>
         </PageHeader.Action>
       </PageHeader>
       <div className="bg-white shadow overflow-hidden sm:rounded-md">
@@ -36,7 +37,7 @@ export default function JournalsIndex() {
               <div className="flex items-center px-4 py-4 sm:px-6">
                 <div className="min-w-0 flex-1 flex items-center">
                   <div>
-                    <RoundLink to={`./${journal.id}`}>Edit</RoundLink>
+                    <Link to={`./${journal.id}`}>Edit</Link>
                   </div>
                   <div className="flex-shrink-0">
                     <span className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-gray-500 font-bold text-white">

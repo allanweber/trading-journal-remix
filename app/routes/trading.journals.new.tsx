@@ -1,11 +1,10 @@
 import type { ActionFunctionArgs } from '@remix-run/node';
-import { Form } from '@remix-run/react';
+import { Form, Link } from '@remix-run/react';
 import { NumberInput, TextInput } from '@tremor/react';
-import CancelLink from '~/components/CancelLink';
 import CurrencySelect from '~/components/CurrencySelect';
 import FormLabel from '~/components/FormLabel';
 import PageHeader from '~/components/PageHeader';
-import PrimaryButton from '~/components/PrimaryButton';
+import { Button } from '~/components/ui/button';
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
@@ -78,9 +77,11 @@ export default function NewJournal() {
                 </div>
                 <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <div className="flex justify-end">
-                    <CancelLink to="/trading/journals">Cancel</CancelLink>
+                    <Button asChild variant="outline" className="w-[200px]">
+                      <Link to="/trading/journals">Cancel</Link>
+                    </Button>
                     <span className="ml-3">
-                      <PrimaryButton>Save Journal</PrimaryButton>
+                      <Button className="w-[200px]">Save Journal</Button>
                     </span>
                   </div>
                 </div>

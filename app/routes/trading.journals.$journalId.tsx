@@ -1,10 +1,9 @@
 import { PlusIcon } from '@heroicons/react/24/solid';
 import type { LoaderFunctionArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
-import { useLoaderData } from '@remix-run/react';
-import CancelLink from '~/components/CancelLink';
+import { Link, useLoaderData } from '@remix-run/react';
 import PageHeader from '~/components/PageHeader';
-import PrimaryButton from '~/components/PrimaryButton';
+import { Button } from '~/components/ui/button';
 import { getJournal } from '~/model/journal/journal.server';
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
@@ -114,10 +113,12 @@ export default function EditJournal() {
 
           <div className="flex justify-end">
             <span className="mr-2">
-              <CancelLink to="/trading/journals">Cancel</CancelLink>
+              <Button asChild variant="outline" className="w-[200px]">
+                <Link to="/trading/journals">Cancel</Link>
+              </Button>
             </span>
             <span>
-              <PrimaryButton>Create this project</PrimaryButton>
+              <Button className="w-[200px]">Create this project</Button>
             </span>
           </div>
         </div>

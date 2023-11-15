@@ -1,13 +1,13 @@
 import type { LoaderFunctionArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
-import { useLoaderData } from '@remix-run/react';
+import { Link, useLoaderData } from '@remix-run/react';
 import JournalSelect from '~/components/JournalSelect';
 import PageHeader from '~/components/PageHeader';
-import PrimaryLink from '~/components/PrimaryLink';
 import type { Journal } from '~/model/journal/Journal';
 import { getJournals } from '~/model/journal/journal.server';
 
 import { Col, Grid } from '@tremor/react';
+import { Button } from '~/components/ui/button';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const journals = await getJournals(request);
@@ -29,7 +29,9 @@ export default function Dashboard() {
           Check out how each of your journals are performing
         </PageHeader.Subtitle>
         <PageHeader.Action>
-          <PrimaryLink to="./entries">Add/Change trades</PrimaryLink>
+          <Button asChild>
+            <Link to="./entries">Add/Change trades</Link>
+          </Button>
         </PageHeader.Action>
       </PageHeader>
       <Grid
@@ -42,7 +44,9 @@ export default function Dashboard() {
         <Col>
           <JournalSelect journals={journals} onChange={handleJournalChange} />
         </Col>
-        <Col></Col>
+        <Col>
+          <Button>Test</Button>
+        </Col>
         <Col></Col>
         <Col></Col>
         <Col></Col>
