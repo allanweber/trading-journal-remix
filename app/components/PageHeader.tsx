@@ -20,13 +20,13 @@ export default function PageHeader(props: PropsWithChildren) {
   }, [action, children, subtitle, title]);
 
   return (
-    <div className="mb-2">
-      <div className="flex items-center">
-        <div className="flex-auto">
-          {title}
-          {subtitle}
-        </div>
-        <div className="mt-4 sm:mt-0 sm:ml-16 ">{action}</div>
+    <div className="flex items-center justify-between space-y-2">
+      <div>
+        <h2 className="text-lg font-medium">{title}</h2>
+        <h3 className="text-sm text-muted-foreground">{subtitle}</h3>
+      </div>
+      <div className="flex items-center space-x-2">
+        <div className="sm:mt-0 sm:ml-16 ">{action}</div>
       </div>
     </div>
   );
@@ -34,17 +34,17 @@ export default function PageHeader(props: PropsWithChildren) {
 
 const Title = (props: PropsWithChildren) => {
   const { children } = props;
-  return <h1 className="text-xl font-semibold text-gray-900">{children}</h1>;
+  return children;
 };
 
 const Subtitle = (props: PropsWithChildren) => {
   const { children } = props;
-  return <p className="mt-2 text-sm text-gray-700">{children}</p>;
+  return children;
 };
 
 const Action = (props: PropsWithChildren) => {
   const { children } = props;
-  return <div className="mt-4 sm:mt-0 sm:ml-16 ">{children}</div>;
+  return children;
 };
 
 PageHeader.Title = Title;

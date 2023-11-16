@@ -16,27 +16,26 @@ export default function JournalBalanceStatus(props: Props) {
   const { journal } = props;
   const [growing] = useState(journal.balance.current >= journal.initialBalance);
   return (
-    <>
+    <div className="flex space-y-2">
       <Switch>
         <Case condition={growing}>
           <ArrowTrendingUpIcon
-            className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-600"
+            className="h-5 w-5 text-green-600 mt-2"
             aria-hidden="true"
           />
         </Case>
         <Default>
           <ArrowTrendingDownIcon
-            className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-600"
+            className="h-5 w-5 text-red-600 mt-2"
             aria-hidden="true"
           />
         </Default>
       </Switch>
-
       <ColoredNumber value={journal.balance.current}>
         <CurrencyDisplay currency={journal.currency}>
           {journal.balance.current}
         </CurrencyDisplay>
       </ColoredNumber>
-    </>
+    </div>
   );
 }

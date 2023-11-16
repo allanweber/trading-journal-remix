@@ -17,7 +17,9 @@ export default function TradingJournal() {
   return (
     <>
       <JournalNav user={user} />
-      <Outlet />
+      <div className="flex-1 space-y-4 p-2 md:p-4 pt-2 md:pt-6">
+        <Outlet />
+      </div>
     </>
   );
 }
