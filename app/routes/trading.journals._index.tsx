@@ -1,16 +1,16 @@
 import type { LoaderFunctionArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
-import React from 'react';
 import DateTimeDisplay from '~/components/DateTimeDisplay';
 import JournalBalanceStatus from '~/components/JournalBalanceStatus';
 import PageHeader from '~/components/PageHeader';
 import { Button } from '~/components/ui/button';
-import { getIcon } from '~/model/currency/currencies';
 import { getJournals } from '~/model/journal/journal.server';
 import { requireUserView } from '~/utils/session.server';
 
-export const loader = async ({ request, params }: LoaderFunctionArgs) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
+  // const url = new URL(request.url);
+  // console.log('params', url.searchParams);
   const user = await requireUserView(request);
   const journals = await getJournals(user);
   return json({ journals });
@@ -40,11 +40,6 @@ export default function JournalsIndex() {
                 <div className="min-w-0 flex-1 flex items-center">
                   <div>
                     <Link to={`./${journal._id}`}>Edit</Link>
-                  </div>
-                  <div className="flex-shrink-0">
-                    <span className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-gray-500 font-bold text-white">
-                      {React.createElement(getIcon(journal.currency), {})}
-                    </span>
                   </div>
                   <div className="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
                     <div>

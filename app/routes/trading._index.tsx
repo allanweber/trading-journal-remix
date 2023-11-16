@@ -8,9 +8,11 @@ import { getJournals } from '~/model/journal/journal.server';
 
 import { Col, Grid } from '@tremor/react';
 import { Button } from '~/components/ui/button';
+import { requireUserView } from '~/utils/session.server';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const journals = await getJournals(request);
+  const user = await requireUserView(request);
+  const journals = await getJournals(user);
   return json({ journals });
 };
 

@@ -1,6 +1,6 @@
 import { SearchSelect, SearchSelectItem } from '@tremor/react';
 import { useState } from 'react';
-import { currencies, getIcon } from '~/model/currency/currencies';
+import { currencies } from '~/model/currency/currencies';
 
 type Props = {
   selected?: string;
@@ -19,18 +19,9 @@ export default function CurrencySelect(props: Props) {
   };
 
   return (
-    <SearchSelect
-      value={current}
-      icon={getIcon(current)}
-      onValueChange={handleSelect}
-      {...rest}
-    >
+    <SearchSelect value={current} onValueChange={handleSelect} {...rest}>
       {curr.map((currency) => (
-        <SearchSelectItem
-          key={currency.value}
-          value={currency.value}
-          icon={getIcon(currency.value)}
-        >
+        <SearchSelectItem key={currency.value} value={currency.value}>
           {currency.value}
         </SearchSelectItem>
       ))}

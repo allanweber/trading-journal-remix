@@ -1,16 +1,5 @@
-import {
-  TbCurrencyDollar,
-  TbCurrencyEuro,
-  TbCurrencyReal,
-} from 'react-icons/tb';
-
 export const currencies = [
-  { value: 'USD', symbol: '$', icon: TbCurrencyDollar },
-  { value: 'EUR', symbol: '€', icon: TbCurrencyEuro },
-  { value: 'BRL', symbol: 'R$', icon: TbCurrencyReal },
+  { value: 'USD', symbol: '$' },
+  { value: 'EUR', symbol: '€' },
+  { value: 'BRL', symbol: 'R$' },
 ];
-
-export const getIcon = (currency: string) => {
-  const icon = currencies.find((c) => c.value === currency);
-  return icon ? icon?.icon : TbCurrencyDollar;
-};
