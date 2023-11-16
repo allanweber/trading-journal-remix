@@ -17,3 +17,7 @@ export async function requireUserView(
   }
   return user;
 }
+
+export function getDbName(email: string) {
+  return email.replace(/[\W_]+/g, '_');
+}

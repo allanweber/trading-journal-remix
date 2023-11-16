@@ -8,9 +8,11 @@ import PageHeader from '~/components/PageHeader';
 import { Button } from '~/components/ui/button';
 import { getIcon } from '~/model/currency/currencies';
 import { getJournals } from '~/model/journal/journal.server';
+import { requireUserView } from '~/utils/session.server';
 
-export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const journals = await getJournals(request);
+export const loader = async ({ request, params }: LoaderFunctionArgs) => {
+  const user = await requireUserView(request);
+  const journals = await getJournals(user);
   return json({ journals });
 };
 
@@ -33,11 +35,11 @@ export default function JournalsIndex() {
       <div className="bg-white shadow overflow-hidden sm:rounded-md">
         <ul className="divide-y divide-gray-200">
           {journals.map((journal) => (
-            <li key={journal.id} className="block hover:bg-gray-50">
+            <li key={journal._id} className="block hover:bg-gray-50">
               <div className="flex items-center px-4 py-4 sm:px-6">
                 <div className="min-w-0 flex-1 flex items-center">
                   <div>
-                    <Link to={`./${journal.id}`}>Edit</Link>
+                    <Link to={`./${journal._id}`}>Edit</Link>
                   </div>
                   <div className="flex-shrink-0">
                     <span className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-gray-500 font-bold text-white">

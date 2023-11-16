@@ -5,10 +5,12 @@ import { Link, useLoaderData } from '@remix-run/react';
 import PageHeader from '~/components/PageHeader';
 import { Button } from '~/components/ui/button';
 import { getJournal } from '~/model/journal/journal.server';
+import { requireUserView } from '~/utils/session.server';
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   const { journalId } = params;
-  const journal = await getJournal(request, journalId!);
+  const user = await requireUserView(request);
+  const journal = await getJournal(user, journalId!);
   return json({ journal });
 };
 

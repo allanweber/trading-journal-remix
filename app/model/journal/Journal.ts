@@ -1,5 +1,5 @@
 export type Journal = {
-  id: string;
+  _id: string;
   name: string;
   description: string;
   currency: string;
