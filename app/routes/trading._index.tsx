@@ -1,7 +1,6 @@
 import type { LoaderFunctionArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
-import JournalSelect from '~/components/JournalSelect';
 import PageHeader from '~/components/PageHeader';
 import type { Journal } from '~/model/journal/Journal';
 import { getJournals } from '~/model/journal/journal.server';
@@ -43,9 +42,7 @@ export default function Dashboard() {
         numItemsLg={4}
         className="gap-2"
       >
-        <Col>
-          <JournalSelect journals={journals} onChange={handleJournalChange} />
-        </Col>
+        <Col></Col>
         <Col>
           <Button>Test</Button>
         </Col>

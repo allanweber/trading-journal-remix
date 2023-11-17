@@ -2,24 +2,29 @@ import { ObjectId } from 'mongodb';
 import mongoClient from '~/lib/mongodb';
 import { getDbName } from '~/utils/session.server';
 import type { UserView } from '../User';
+import { Paginated, Pagination } from '../pagination';
 import type { Journal } from './Journal';
 
 const COLLECTION = 'journals';
 
-export async function getJournals(user: UserView): Promise<Journal[]> {
+export async function getJournals(
+  user: UserView,
+  term?: string | null,
+  currencies?: string[],
+  pageSize: number = 10,
+  pageNumber: number = 1
+): Promise<Paginated<Journal>> {
   const dbName = getDbName(user.email);
   const client = await mongoClient;
 
   let query = {};
-  const pageSize = 10;
-  const pageNumber = 1;
-  // if (term) {
-  //   query = { name: { $regex: term, $options: 'i' } };
-  // }
+  if (term) {
+    query = { name: { $regex: term, $options: 'i' } };
+  }
 
-  // if (currencies && currencies.length > 0) {
-  //   query = { ...query, currency: { $in: currencies } };
-  // }
+  if (currencies && currencies.length > 0) {
+    query = { ...query, currency: { $in: currencies } };
+  }
 
   const [
     {
@@ -50,7 +55,7 @@ export async function getJournals(user: UserView): Promise<Journal[]> {
     ])
     .toArray();
 
-  return journals;
+  return new Paginated(journals, new Pagination(pageSize, pageNumber, total));
 }
 
 export async function getJournal(
