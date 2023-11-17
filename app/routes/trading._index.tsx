@@ -1,27 +1,10 @@
-import type { LoaderFunctionArgs } from '@remix-run/node';
-import { json } from '@remix-run/node';
-import { Link, useLoaderData } from '@remix-run/react';
+import { Link } from '@remix-run/react';
 import PageHeader from '~/components/PageHeader';
-import type { Journal } from '~/model/journal/Journal';
-import { getJournals } from '~/model/journal/journal.server';
 
 import { Col, Grid } from '@tremor/react';
 import { Button } from '~/components/ui/button';
-import { requireUserView } from '~/utils/session.server';
-
-export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const user = await requireUserView(request);
-  const journals = await getJournals(user);
-  return json({ journals });
-};
 
 export default function Dashboard() {
-  const { journals } = useLoaderData<typeof loader>();
-
-  const handleJournalChange = (journal: Journal) => {
-    console.log(journal);
-  };
-
   return (
     <main className="py-2 px-4">
       <PageHeader>

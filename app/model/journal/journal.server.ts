@@ -26,6 +26,8 @@ export async function getJournals(
     query = { ...query, currency: { $in: currencies } };
   }
 
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+
   const [
     {
       total: [total = 0],
